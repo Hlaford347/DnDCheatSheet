@@ -69,7 +69,6 @@ const CharacterDetails = () => {
     subrace,
     level,
     role,
-    skills,
     strength,
     dexterity,
     constitution,

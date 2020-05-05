@@ -1,16 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
-import { AppBar, Toolbar, Button, makeStyles } from '@material-ui/core';
-
-const useStyles = makeStyles({
-  root: {
-    height: '50px',
-  },
-});
+import { AppBar, Toolbar, Button } from '@material-ui/core';
 
 const Navbar = ({ title, icon }) => {
-  const classes = useStyles();
   return (
     <Fragment>
       <AppBar position='static'>

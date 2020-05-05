@@ -9,6 +9,7 @@ import {
   Typography,
   makeStyles,
 } from '@material-ui/core';
+import CharacterDetails from '../characterDetails/CharacterDetails';
 import PropTypes from 'prop-types';
 
 function TabPanel(props) {
@@ -24,7 +25,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          <Typography component={'span'}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -83,12 +84,12 @@ const Characters = () => {
           ))}
           <Tab value={countOfCharacters + 1} label='Add Character' />
         </Tabs>
-        {characters.map((character, index) => (
-          <TabPanel value={value} index={index + 1} key={character.id}>
-            <CharacterItem character={character} key={character.id} />
-          </TabPanel>
-        ))}
       </AppBar>
+      {characters.map((character, index) => (
+        <TabPanel value={value} index={index + 1} key={character.id}>
+          <CharacterItem character={character} key={character.id} />
+        </TabPanel>
+      ))}
     </Fragment>
   );
 };

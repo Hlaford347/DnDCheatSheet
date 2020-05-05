@@ -1,11 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { ListItem, makeStyles } from '@material-ui/core';
-import skillsList from '../../../data/skills';
 import CharacterContext from '../../../context/character/characterContext';
 
 const useStyle = makeStyles({
   listItem: {
     borderBottom: '1px solid grey',
+  },
+  proficient: {
+    backgroundColor: '#4dd0e1',
+  },
+  expert: {
+    backgroundColor: '#ffeb3b',
   },
 });
 
@@ -34,6 +39,8 @@ const SkillItem = ({ skill }) => {
 
   const { skills } = char;
 
+  let count;
+
   const btnClick = (e) => {
     e.preventDefault();
     const skillToAdd = e.target.innerText;
@@ -42,8 +49,13 @@ const SkillItem = ({ skill }) => {
 
       setChar({ ...char, skills: skills });
       console.log(char);
+    } else {
+      const removedSkill = skills.filter((skill) => skill !== skillToAdd);
+      setChar({ ...char, skills: removedSkill });
     }
+    count = skills.filter((skill) => skill === skill).length;
 
+    console.log(count);
     updateCharacter(char);
   };
 

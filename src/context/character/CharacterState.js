@@ -7,8 +7,6 @@ import {
   CLEAR_CURRENT,
   UPDATE_CHARACTER,
 } from '../types';
-import Skills from '../../data/skills';
-import Classes from '../../data/classes';
 import { uuid } from 'uuidv4';
 
 const CharacterState = (props) => {

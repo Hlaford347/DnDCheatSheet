@@ -1,18 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import skillsList from '../../../data/skills';
 import SkillItem from './SkillItem';
 import { Box, List } from '@material-ui/core';
-import CharacterContext from '../../../context/character/characterContext';
 
 const Skills = () => {
-  const characterContext = useContext(CharacterContext);
-
-  const { addCharacter, setCharacter } = characterContext;
-
-  const [char, setChar] = useState({
-    skills: [],
-  });
-
   return (
     <Box>
       <Box p={2}>
