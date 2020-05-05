@@ -17,6 +17,8 @@ const CharacterState = (props) => {
       {
         id: 1,
         name: 'Player 1',
+        race: 'Dwarf',
+        subrace: 'Hill dwarf',
         level: 2,
         role: 'Fighter',
         skills: ['Acrobatics', 'Athletics'],
@@ -30,6 +32,8 @@ const CharacterState = (props) => {
       {
         id: 2,
         name: 'Player 2',
+        race: 'Gnome',
+        subrace: 'Rock gnome',
         level: 3,
         role: 'Ranger',
         skills: ['Stealth', 'Sleight of hand'],
@@ -43,6 +47,8 @@ const CharacterState = (props) => {
       {
         id: 3,
         name: 'Player 3',
+        race: 'Elf',
+        subrace: 'Wood elf',
         level: 2,
         role: 'Druid',
         skills: ['Animal handling', 'Perception'],

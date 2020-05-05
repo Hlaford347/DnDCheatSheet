@@ -1,34 +1,35 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Card, CardContent, Grid, Button } from '@material-ui/core/';
 import PropTypes from 'prop-types';
 
 const CharacterItem = ({ character }) => {
-  const { name, level, skills, role } = character;
+  const { name, race, subrace, level, skills, role } = character;
 
   return (
-    <Card elevation={2}>
-      <CardContent>
-        <Grid container spacing={0} justify='space-between'>
-          <Grid item xs={6}>
-            <strong>{name}</strong>
-          </Grid>
-          <Grid item xs={6}>
-            {role}
-          </Grid>
-          <Grid item xs={12}>
-            Level: {level}
-          </Grid>
-          <Grid item xs={6}>
-            {skills + ', '}
-          </Grid>
-          <Grid item xs={6}>
-            <Button color='secondary' variant='contained'>
-              Delete
-            </Button>
-          </Grid>
+    <Fragment>
+      <Grid container spacing={0}>
+        <Grid item xs={2}>
+          <strong>{name}</strong>
         </Grid>
-      </CardContent>
-    </Card>
+        <Grid item xs={2}>
+          Race: {subrace ? subrace : race}
+        </Grid>
+        <Grid item xs={2}>
+          Class: {role}
+        </Grid>
+        <Grid item xs={2}>
+          Level: {level}
+        </Grid>
+        <Grid item xs={2}>
+          {skills + ', '}
+        </Grid>
+        <Grid item xs={2}>
+          <Button color='secondary' variant='contained'>
+            Delete
+          </Button>
+        </Grid>
+      </Grid>
+    </Fragment>
   );
 };
 

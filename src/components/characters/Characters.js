@@ -1,7 +1,14 @@
 import React, { Fragment, useContext, useState } from 'react';
 import CharacterContext from '../../context/character/characterContext';
 import CharacterItem from './CharacterItem';
-import { AppBar, Tabs, Tab, Box, Typography } from '@material-ui/core';
+import {
+  AppBar,
+  Tabs,
+  Tab,
+  Box,
+  Typography,
+  makeStyles,
+} from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 function TabPanel(props) {
@@ -37,7 +44,14 @@ function a11yProps(index) {
   };
 }
 
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: '#b0bec5',
+  },
+});
+
 const Characters = () => {
+  const classes = useStyles();
   const characterContext = useContext(CharacterContext);
   const [value, setValue] = useState(1);
 
@@ -51,11 +65,13 @@ const Characters = () => {
 
   return (
     <Fragment>
-      <AppBar position='static' color='inherit' variant='elevation'>
+      <AppBar position='static' color='inherit' className={classes.root}>
         <Tabs
           onChange={handleChange}
           aria-label='character names'
           value={value}
+          variant='scrollable'
+          scrollButtons='auto'
         >
           {characters.map((character, index) => (
             <Tab
@@ -67,12 +83,12 @@ const Characters = () => {
           ))}
           <Tab value={countOfCharacters + 1} label='Add Character' />
         </Tabs>
+        {characters.map((character, index) => (
+          <TabPanel value={value} index={index + 1} key={character.id}>
+            <CharacterItem character={character} key={character.id} />
+          </TabPanel>
+        ))}
       </AppBar>
-      {characters.map((character, index) => (
-        <TabPanel value={value} index={index + 1} key={character.id}>
-          <CharacterItem character={character} key={character.id} />
-        </TabPanel>
-      ))}
     </Fragment>
   );
 };

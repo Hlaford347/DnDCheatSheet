@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
-import { AppBar, Toolbar, Button } from '@material-ui/core';
+import { AppBar, Toolbar, Button, makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles({
+  root: {
+    height: '50px',
+  },
+});
 
 const Navbar = ({ title, icon }) => {
+  const classes = useStyles();
   return (
-    <AppBar position='static'>
-      <Toolbar>
-        <Button component={RouterLink} to='/'>
-          Home
-        </Button>
-        <Button component={RouterLink} to='/character'>
-          Characters
-        </Button>
-        <Button component={RouterLink} to='/cheatSheet'>
-          Cheat Sheet
-        </Button>
-      </Toolbar>
-    </AppBar>
+    <Fragment>
+      <AppBar position='static'>
+        <Toolbar>
+          <Button component={RouterLink} to='/'>
+            Home
+          </Button>
+          <Button component={RouterLink} to='/character'>
+            Characters
+          </Button>
+          <Button component={RouterLink} to='/cheatSheet'>
+            Cheat Sheet
+          </Button>
+        </Toolbar>
+      </AppBar>
+    </Fragment>
   );
 };
 
