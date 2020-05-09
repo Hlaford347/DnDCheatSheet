@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import { Box, Grid, Button } from '@material-ui/core/';
 import PropTypes from 'prop-types';
 import CharacterContext from '../../context/character/characterContext';
@@ -8,13 +8,17 @@ const CharacterItem = ({ character }) => {
 
   const characterContext = useContext(CharacterContext);
 
-  const { deleteCharacter } = characterContext;
+  const { deleteCharacter, setCurrent, clearCurrent } = characterContext;
+
+  useEffect(() => {
+    setCurrent(character);
+    // eslint-disable-next-line
+  }, []);
 
   const removeCharacter = () => {
     deleteCharacter(id);
+    clearCurrent();
   };
-
-  console.log(skills);
 
   return (
     <Fragment>
@@ -37,6 +41,7 @@ const CharacterItem = ({ character }) => {
               if (skill.proficient) {
                 return skill.name + ', ';
               }
+              return null;
             })}
           </Grid>
           <Grid item>

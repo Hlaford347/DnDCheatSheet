@@ -10,6 +10,7 @@ import {
   makeStyles,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import CharacterDetails from '../characterDetails/CharacterDetails';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -55,9 +56,12 @@ const Characters = () => {
   const characterContext = useContext(CharacterContext);
   const [value, setValue] = useState(1);
 
-  const { characters } = characterContext;
+  const { characters, clearCurrent, current } = characterContext;
 
   const handleChange = (e, newValue) => {
+    if (newValue > countOfCharacters) {
+      clearCurrent();
+    }
     setValue(newValue);
   };
 
@@ -87,8 +91,15 @@ const Characters = () => {
       {characters.map((character, index) => (
         <TabPanel value={value} index={index + 1} key={character.id}>
           <CharacterItem character={character} key={character.id} />
+          <CharacterDetails />
         </TabPanel>
       ))}
+      {current === null ? (
+        <TabPanel index={countOfCharacters + 1} value={value}>
+          <Box fontSize='h5.fontSize'>Add Character</Box>
+          <CharacterDetails />
+        </TabPanel>
+      ) : null}
     </Fragment>
   );
 };

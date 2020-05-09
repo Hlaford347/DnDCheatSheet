@@ -16,13 +16,12 @@ const useStyle = makeStyles({
 const SkillItem = ({ skill, handleButtonPress }) => {
   const classes = useStyle();
 
-  const [currentClasses, setCurrentClasses] = useState(`${classes.listItem}`);
   return (
     <ListItem
       button
       onClick={handleButtonPress}
       className={
-        currentClasses +
+        classes.listItem +
         ' ' +
         (skill.proficient
           ? classes.proficient

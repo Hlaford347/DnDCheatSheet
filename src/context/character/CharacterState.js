@@ -332,6 +332,7 @@ const CharacterState = (props) => {
         charisma: 10,
       },
     ],
+    current: null,
   };
 
   const [state, dispatch] = useReducer(characterReducer, initialState);
@@ -343,8 +344,14 @@ const CharacterState = (props) => {
   };
 
   // Set Current Character
+  const setCurrent = (character) => {
+    dispatch({ type: SET_CURRENT, payload: character });
+  };
 
   // Clear Current Character
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
 
   // Update Current Character
   const updateCharacter = (character) => {
@@ -360,9 +367,12 @@ const CharacterState = (props) => {
     <CharacterContext.Provider
       value={{
         characters: state.characters,
+        current: state.current,
         addCharacter,
         updateCharacter,
         deleteCharacter,
+        setCurrent,
+        clearCurrent,
       }}
     >
       {props.children}

@@ -1,5 +1,4 @@
 import React from 'react';
-import skillsList from '../../../data/skills';
 import SkillItem from './SkillItem';
 import { Box, List } from '@material-ui/core';
 

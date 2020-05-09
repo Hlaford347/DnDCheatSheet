@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   FormControl,
   TextField,
@@ -36,7 +36,119 @@ const CharacterDetails = () => {
 
   const characterContext = useContext(CharacterContext);
 
-  const { addCharacter, setCharacter } = characterContext;
+  const { addCharacter, current, updateCharacter } = characterContext;
+
+  useEffect(() => {
+    if (current !== null) {
+      setChar(current);
+    } else {
+      setChar({
+        name: '',
+        race: '',
+        subrace: '',
+        level: '',
+        role: '',
+        skills: [
+          {
+            name: 'Acrobatics',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Animal handling',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Arcana',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Athletics',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Deception',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'History',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Insight',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Intimidation',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Investigation',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Medicine',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Nature',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Perception',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Performance',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Persuasion',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Religion',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Sleight of hand',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Stealth',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Survival',
+            proficient: false,
+            expert: false,
+          },
+        ],
+        strength: 10,
+        dexterity: 10,
+        constitution: 10,
+        intelligence: 10,
+        wisdom: 10,
+        charisma: 10,
+      });
+    }
+  }, [characterContext, current]);
 
   const [nameInvalid, setNameValid] = useState(false);
   const [raceInvalid, setRaceValid] = useState(false);
@@ -180,8 +292,8 @@ const CharacterDetails = () => {
     const currentSkill = newSkills.filter((sk, index) => {
       if (sk.name === skill) {
         indexOfSkill = index;
-        return sk.name === skill;
       }
+      return sk.name === skill;
     })[0];
 
     if (!currentSkill.proficient && !currentSkill.expert) {
@@ -199,124 +311,126 @@ const CharacterDetails = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(char);
 
     handleValidation();
-
-    if (!(name === '' || level === '' || role === '')) {
-      addCharacter(char);
-      setChar({
-        name: '',
-        race: '',
-        subrace: '',
-        level: 1,
-        role: 'Fighter',
-        skills: [
-          {
-            name: 'Acrobatics',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Animal handling',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Arcana',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Athletics',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Deception',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'History',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Insight',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Intimidation',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Investigation',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Medicine',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Nature',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Perception',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Performance',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Persuasion',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Religion',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Sleight of hand',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Stealth',
-            proficient: false,
-            expert: false,
-          },
-          {
-            name: 'Survival',
-            proficient: false,
-            expert: false,
-          },
-        ],
-        strength: 10,
-        dexterity: 10,
-        constitution: 10,
-        intelligence: 10,
-        wisdom: 10,
-        charisma: 10,
-      });
+    if (!(name === '' || level === '' || role === '' || race === '')) {
+      if (current === null) {
+        addCharacter(char);
+      } else {
+        updateCharacter(char);
+      }
     }
+    setChar({
+      name: '',
+      race: '',
+      subrace: '',
+      level: '',
+      role: '',
+      skills: [
+        {
+          name: 'Acrobatics',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Animal handling',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Arcana',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Athletics',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Deception',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'History',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Insight',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Intimidation',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Investigation',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Medicine',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Nature',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Perception',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Performance',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Persuasion',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Religion',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Sleight of hand',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Stealth',
+          proficient: false,
+          expert: false,
+        },
+        {
+          name: 'Survival',
+          proficient: false,
+          expert: false,
+        },
+      ],
+      strength: 10,
+      dexterity: 10,
+      constitution: 10,
+      intelligence: 10,
+      wisdom: 10,
+      charisma: 10,
+    });
   };
 
   return (
     <Box p={2}>
-      <Grid container spacing={0}>
-        <Grid item xs={3}>
+      <Grid container spacing={1}>
+        <Grid item xs={2}>
           <FormGroup>
             <FormControl className={classes.formControl}>
               <TextField
@@ -411,11 +525,11 @@ const CharacterDetails = () => {
             </FormControl>
 
             <Button variant='contained' onClick={onSubmit}>
-              Create New
+              {current ? 'Save Edits' : 'Create New'}
             </Button>
           </FormGroup>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={1}>
           <AbilityScores
             handleChange={handleChange}
             character={char}
@@ -423,7 +537,7 @@ const CharacterDetails = () => {
             classes={classes}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <Skills character={char} handleButtonPress={handleButtonPress} />
         </Grid>
       </Grid>
