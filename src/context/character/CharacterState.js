@@ -6,6 +6,7 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_CHARACTER,
+  DELETE_CHARACTER,
 } from '../types';
 import { uuid } from 'uuidv4';
 
@@ -19,7 +20,98 @@ const CharacterState = (props) => {
         subrace: 'Hill dwarf',
         level: 2,
         role: 'Fighter',
-        skills: ['Acrobatics', 'Athletics'],
+        skills: [
+          {
+            name: 'Acrobatics',
+            proficient: true,
+            expert: false,
+          },
+          {
+            name: 'Animal handling',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Arcana',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Athletics',
+            proficient: true,
+            expert: false,
+          },
+          {
+            name: 'Deception',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'History',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Insight',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Intimidation',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Investigation',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Medicine',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Nature',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Perception',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Performance',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Persuasion',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Religion',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Sleight of hand',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Stealth',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Survival',
+            proficient: false,
+            expert: false,
+          },
+        ],
         strength: 10,
         dexterity: 10,
         constitution: 10,
@@ -34,7 +126,98 @@ const CharacterState = (props) => {
         subrace: 'Rock gnome',
         level: 3,
         role: 'Ranger',
-        skills: ['Stealth', 'Sleight of hand'],
+        skills: [
+          {
+            name: 'Acrobatics',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Animal handling',
+            proficient: true,
+            expert: false,
+          },
+          {
+            name: 'Arcana',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Athletics',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Deception',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'History',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Insight',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Intimidation',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Investigation',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Medicine',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Nature',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Perception',
+            proficient: true,
+            expert: false,
+          },
+          {
+            name: 'Performance',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Persuasion',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Religion',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Sleight of hand',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Stealth',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Survival',
+            proficient: false,
+            expert: false,
+          },
+        ],
         strength: 10,
         dexterity: 10,
         constitution: 10,
@@ -49,7 +232,98 @@ const CharacterState = (props) => {
         subrace: 'Wood elf',
         level: 2,
         role: 'Druid',
-        skills: ['Animal handling', 'Perception'],
+        skills: [
+          {
+            name: 'Acrobatics',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Animal handling',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Arcana',
+            proficient: true,
+            expert: false,
+          },
+          {
+            name: 'Athletics',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Deception',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'History',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Insight',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Intimidation',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Investigation',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Medicine',
+            proficient: true,
+            expert: false,
+          },
+          {
+            name: 'Nature',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Perception',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Performance',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Persuasion',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Religion',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Sleight of hand',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Stealth',
+            proficient: false,
+            expert: false,
+          },
+          {
+            name: 'Survival',
+            proficient: false,
+            expert: false,
+          },
+        ],
         strength: 10,
         dexterity: 10,
         constitution: 10,
@@ -77,12 +351,18 @@ const CharacterState = (props) => {
     dispatch({ type: UPDATE_CHARACTER, payload: character });
   };
 
+  // Delete Current Character
+  const deleteCharacter = (id) => {
+    dispatch({ type: DELETE_CHARACTER, payload: id });
+  };
+
   return (
     <CharacterContext.Provider
       value={{
         characters: state.characters,
         addCharacter,
         updateCharacter,
+        deleteCharacter,
       }}
     >
       {props.children}

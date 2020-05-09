@@ -9,7 +9,6 @@ import {
   Typography,
   makeStyles,
 } from '@material-ui/core';
-import CharacterDetails from '../characterDetails/CharacterDetails';
 import PropTypes from 'prop-types';
 
 function TabPanel(props) {

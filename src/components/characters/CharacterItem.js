@@ -1,9 +1,20 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Box, Grid, Button } from '@material-ui/core/';
 import PropTypes from 'prop-types';
+import CharacterContext from '../../context/character/characterContext';
 
 const CharacterItem = ({ character }) => {
-  const { name, race, subrace, level, skills, role } = character;
+  const { id, name, race, subrace, level, skills, role } = character;
+
+  const characterContext = useContext(CharacterContext);
+
+  const { deleteCharacter } = characterContext;
+
+  const removeCharacter = () => {
+    deleteCharacter(id);
+  };
+
+  console.log(skills);
 
   return (
     <Fragment>
@@ -22,10 +33,18 @@ const CharacterItem = ({ character }) => {
             Level: {level}
           </Grid>
           <Grid item xs={2}>
-            {skills + ', '}
+            {skills.map((skill) => {
+              if (skill.proficient) {
+                return skill.name + ', ';
+              }
+            })}
           </Grid>
           <Grid item>
-            <Button color='secondary' variant='contained'>
+            <Button
+              color='secondary'
+              variant='contained'
+              onClick={removeCharacter}
+            >
               Delete
             </Button>
           </Grid>

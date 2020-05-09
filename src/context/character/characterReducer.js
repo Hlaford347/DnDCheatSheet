@@ -3,6 +3,7 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_CHARACTER,
+  DELETE_CHARACTER,
 } from '../types';
 
 export default (state, action) => {
@@ -17,6 +18,13 @@ export default (state, action) => {
         ...state,
         characters: state.characters.map((character) =>
           character.id === action.payload.id ? action.payload : character
+        ),
+      };
+    case DELETE_CHARACTER:
+      return {
+        ...state,
+        characters: state.characters.filter(
+          (character) => character.id !== action.payload
         ),
       };
 

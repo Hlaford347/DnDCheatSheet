@@ -3,13 +3,20 @@ import skillsList from '../../../data/skills';
 import SkillItem from './SkillItem';
 import { Box, List } from '@material-ui/core';
 
-const Skills = () => {
+const Skills = ({ character, handleButtonPress }) => {
+  const { skills } = character;
+
   return (
     <Box>
       <Box p={2}>
         <List aria-label='main skills list'>
-          {skillsList.map((skill) => (
-            <SkillItem key={skill} skill={skill} />
+          {skills.map((skill, index) => (
+            <SkillItem
+              key={index}
+              skill={skill}
+              handleButtonPress={handleButtonPress}
+              name='skills'
+            />
           ))}
         </List>
       </Box>
