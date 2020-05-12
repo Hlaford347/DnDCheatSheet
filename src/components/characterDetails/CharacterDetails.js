@@ -30,13 +30,22 @@ const useStyles = makeStyles((theme) => ({
 const CharacterDetails = () => {
   const levels = Array.from(new Array(20), (x, i) => i + 1);
   const races = Object.getOwnPropertyNames(Races);
-  const [subraces, setSubraces] = useState([]);
+  const roles = [];
+  Roles.forEach((role) => {
+    roles.push(role.name);
+  });
 
+  const [subraces, setSubraces] = useState([]);
   const classes = useStyles();
 
   const characterContext = useContext(CharacterContext);
 
-  const { addCharacter, current, updateCharacter } = characterContext;
+  const {
+    addCharacter,
+    current,
+    updateCharacter,
+    setCurrent,
+  } = characterContext;
 
   useEffect(() => {
     if (current !== null) {
@@ -146,6 +155,8 @@ const CharacterDetails = () => {
         intelligence: 10,
         wisdom: 10,
         charisma: 10,
+        maxHP: 8,
+        armorClass: 10,
       });
     }
   }, [characterContext, current]);
@@ -154,6 +165,7 @@ const CharacterDetails = () => {
   const [raceInvalid, setRaceValid] = useState(false);
   const [levelInvalid, setLevelValid] = useState(false);
   const [roleInvalid, setRoleValid] = useState(false);
+  const [hpInvalid, setHpValid] = useState(false);
 
   const [char, setChar] = useState({
     name: '',
@@ -259,13 +271,14 @@ const CharacterDetails = () => {
     intelligence: 10,
     wisdom: 10,
     charisma: 10,
+    maxHP: 8,
+    armorClass: 10,
   });
 
-  const { name, race, subrace, level, role, skills } = char;
+  const { name, race, subrace, level, role, skills, maxHP, armorClass } = char;
 
   const handleChange = (e) => {
     setChar({ ...char, [e.target.name]: e.target.value });
-    console.log(char);
   };
 
   const handleRaceChange = (e) => {
@@ -278,6 +291,7 @@ const CharacterDetails = () => {
     setRaceValid(race === '');
     setLevelValid(level === '');
     setRoleValid(role === '');
+    setHpValid(maxHP === '');
   };
 
   const handleButtonPress = (e) => {
@@ -313,124 +327,28 @@ const CharacterDetails = () => {
     e.preventDefault();
 
     handleValidation();
-    if (!(name === '' || level === '' || role === '' || race === '')) {
+    if (
+      !(
+        name === '' ||
+        level === '' ||
+        role === '' ||
+        race === '' ||
+        maxHP === ''
+      )
+    ) {
       if (current === null) {
         addCharacter(char);
       } else {
         updateCharacter(char);
       }
     }
-    setChar({
-      name: '',
-      race: '',
-      subrace: '',
-      level: '',
-      role: '',
-      skills: [
-        {
-          name: 'Acrobatics',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Animal handling',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Arcana',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Athletics',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Deception',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'History',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Insight',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Intimidation',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Investigation',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Medicine',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Nature',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Perception',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Performance',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Persuasion',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Religion',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Sleight of hand',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Stealth',
-          proficient: false,
-          expert: false,
-        },
-        {
-          name: 'Survival',
-          proficient: false,
-          expert: false,
-        },
-      ],
-      strength: 10,
-      dexterity: 10,
-      constitution: 10,
-      intelligence: 10,
-      wisdom: 10,
-      charisma: 10,
-    });
+    setCurrent(char);
   };
 
   return (
     <Box p={2}>
       <Grid container spacing={1}>
-        <Grid item xs={2}>
+        <Grid item xs={12} md={2}>
           <FormGroup>
             <FormControl className={classes.formControl}>
               <TextField
@@ -514,7 +432,7 @@ const CharacterDetails = () => {
                 value={role}
                 onChange={handleChange}
               >
-                {Roles.map((role, index) => {
+                {roles.map((role, index) => {
                   return (
                     <MenuItem key={index} value={role}>
                       {role}
@@ -523,13 +441,35 @@ const CharacterDetails = () => {
                 })}
               </Select>
             </FormControl>
+            <FormControl className={classes.formControl}>
+              <TextField
+                required
+                type='number'
+                error={hpInvalid}
+                id='maxHP'
+                name='maxHP'
+                label='Max HP'
+                onChange={handleChange}
+                value={maxHP}
+              />
+            </FormControl>
+            <FormControl className={classes.formControl}>
+              <TextField
+                type='number'
+                id='armorClass'
+                name='armorClass'
+                label='Armor Class'
+                onChange={handleChange}
+                value={armorClass}
+              />
+            </FormControl>
 
             <Button variant='contained' onClick={onSubmit}>
               {current ? 'Save Edits' : 'Create New'}
             </Button>
           </FormGroup>
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={12} md={1}>
           <AbilityScores
             handleChange={handleChange}
             character={char}
@@ -537,7 +477,7 @@ const CharacterDetails = () => {
             classes={classes}
           />
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={12} md={2}>
           <Skills character={char} handleButtonPress={handleButtonPress} />
         </Grid>
       </Grid>
