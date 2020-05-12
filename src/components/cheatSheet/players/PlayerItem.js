@@ -3,14 +3,17 @@ import { Paper, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   playerItem: {
     padding: '1rem',
     marginTop: '0.5rem',
     fontSize: 12,
     backgroundColor: '#fff',
   },
-}));
+  gridRow: {
+    marginTop: '0.5rem',
+  },
+});
 
 const PlayerItem = ({ character }) => {
   const classes = useStyles();
@@ -21,21 +24,20 @@ const PlayerItem = ({ character }) => {
           <Grid item xs={3}>
             <div>
               <strong>{character.name}</strong>
-              <br />
-              {character.subrace !== null
-                ? character.subrace
-                : character.race}{' '}
-              {character.role}
             </div>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
             Level: {character.level}
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
             Max HP: {character.maxHP}
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
             AC: {character.armorClass}
+          </Grid>
+          <Grid item xs={12} className={classes.gridRow}>
+            {character.subrace !== null ? character.subrace : character.race}{' '}
+            {character.role}
           </Grid>
         </Grid>
       </Paper>
