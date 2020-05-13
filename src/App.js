@@ -24,7 +24,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CharacterState>
-        <HashRouter>
+        <HashRouter basename='/'>
           <Fragment>
             <Navbar />
             <div className='row'>
