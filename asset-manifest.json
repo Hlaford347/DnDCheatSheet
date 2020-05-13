@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/DnDCheatSheet/static/css/main.7298abb6.chunk.css",
-    "main.js": "/DnDCheatSheet/static/js/main.26028550.chunk.js",
-    "main.js.map": "/DnDCheatSheet/static/js/main.26028550.chunk.js.map",
+    "main.js": "/DnDCheatSheet/static/js/main.438faf71.chunk.js",
+    "main.js.map": "/DnDCheatSheet/static/js/main.438faf71.chunk.js.map",
     "runtime-main.js": "/DnDCheatSheet/static/js/runtime-main.3c686480.js",
     "runtime-main.js.map": "/DnDCheatSheet/static/js/runtime-main.3c686480.js.map",
     "static/js/2.9128193b.chunk.js": "/DnDCheatSheet/static/js/2.9128193b.chunk.js",
     "static/js/2.9128193b.chunk.js.map": "/DnDCheatSheet/static/js/2.9128193b.chunk.js.map",
     "index.html": "/DnDCheatSheet/index.html",
-    "precache-manifest.35eb7c18582514f240f57ea4faba87c2.js": "/DnDCheatSheet/precache-manifest.35eb7c18582514f240f57ea4faba87c2.js",
+    "precache-manifest.3c55583de0135623095b1ae7b1f1c018.js": "/DnDCheatSheet/precache-manifest.3c55583de0135623095b1ae7b1f1c018.js",
     "service-worker.js": "/DnDCheatSheet/service-worker.js",
     "static/css/main.7298abb6.chunk.css.map": "/DnDCheatSheet/static/css/main.7298abb6.chunk.css.map",
     "static/js/2.9128193b.chunk.js.LICENSE.txt": "/DnDCheatSheet/static/js/2.9128193b.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.3c686480.js",
     "static/js/2.9128193b.chunk.js",
     "static/css/main.7298abb6.chunk.css",
-    "static/js/main.26028550.chunk.js"
+    "static/js/main.438faf71.chunk.js"
   ]
 }
