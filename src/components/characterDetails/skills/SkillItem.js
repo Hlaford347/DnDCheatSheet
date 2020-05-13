@@ -1,5 +1,6 @@
 import React from 'react';
 import { ListItem, makeStyles } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const useStyle = makeStyles({
   listItem: {
@@ -34,6 +35,11 @@ const SkillItem = ({ skill, handleButtonPress }) => {
       {skill.name}
     </ListItem>
   );
+};
+
+SkillItem.propTypes = {
+  skill: PropTypes.object.isRequired,
+  handleButtonPress: PropTypes.func.isRequired,
 };
 
 export default SkillItem;

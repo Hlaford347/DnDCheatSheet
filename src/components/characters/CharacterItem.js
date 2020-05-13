@@ -1,5 +1,14 @@
-import React, { Fragment, useContext, useEffect } from 'react';
-import { Box, Grid, Button } from '@material-ui/core/';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
+import {
+  Box,
+  Grid,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@material-ui/core/';
 import PropTypes from 'prop-types';
 import CharacterContext from '../../context/character/characterContext';
 
@@ -18,6 +27,17 @@ const CharacterItem = ({ character }) => {
   const removeCharacter = () => {
     deleteCharacter(id);
     clearCurrent();
+    handleClose();
+  };
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -48,13 +68,35 @@ const CharacterItem = ({ character }) => {
             <Button
               color='secondary'
               variant='contained'
-              onClick={removeCharacter}
+              onClick={handleClickOpen}
             >
               Delete
             </Button>
           </Grid>
         </Grid>
       </Box>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='alert-dialog-title'
+        aria-describedby='alert-dialog-description'
+      >
+        <DialogTitle id='alert-dialog-title'>{'Delete this user?'}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id='alert-dialog-description'>
+            Are you sure that you want to delete this character? This action is
+            irreversible.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color='primary'>
+            Close
+          </Button>
+          <Button onClick={removeCharacter} color='secondary'>
+            Delete Character
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Fragment>
   );
 };

@@ -16,6 +16,7 @@ import { makeStyles } from '@material-ui/styles';
 import CharacterContext from '../../context/character/characterContext';
 import AbilityScores from './abilities/AbilityScores';
 import Skills from './skills/Skills';
+import Languages from '../../data/languages';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -24,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
+  },
+  languageControl: {
+    maxWidth: '100%',
   },
 }));
 
@@ -37,6 +41,12 @@ const CharacterDetails = () => {
 
   const [subraces, setSubraces] = useState([]);
   const classes = useStyles();
+
+  function getStyles(lang, that) {
+    return {
+      fontWeight: languages.indexOf(lang) === -1 ? 400 : 600,
+    };
+  }
 
   const characterContext = useContext(CharacterContext);
 
@@ -157,6 +167,7 @@ const CharacterDetails = () => {
         charisma: 10,
         maxHP: 8,
         armorClass: 10,
+        languages: [],
       });
     }
   }, [characterContext, current]);
@@ -273,9 +284,20 @@ const CharacterDetails = () => {
     charisma: 10,
     maxHP: 8,
     armorClass: 10,
+    languages: [],
   });
 
-  const { name, race, subrace, level, role, skills, maxHP, armorClass } = char;
+  const {
+    name,
+    race,
+    subrace,
+    level,
+    role,
+    skills,
+    maxHP,
+    armorClass,
+    languages,
+  } = char;
 
   const handleChange = (e) => {
     setChar({ ...char, [e.target.name]: e.target.value });
@@ -321,6 +343,10 @@ const CharacterDetails = () => {
 
     setChar({ ...char, skills: newSkills });
     console.log(char);
+  };
+
+  const handleLanguage = (e) => {
+    setChar({ ...char, languages: e.target.value });
   };
 
   const onSubmit = (e) => {
@@ -462,6 +488,31 @@ const CharacterDetails = () => {
                 onChange={handleChange}
                 value={armorClass}
               />
+            </FormControl>
+            <FormControl
+              className={classes.formControl + ' ' + classes.languageControl}
+            >
+              <InputLabel id='languages-select-label'>Languages</InputLabel>
+              <Select
+                multiple
+                labelId='languages-select-label'
+                id='language-select'
+                name='languages'
+                value={languages}
+                onChange={handleLanguage}
+              >
+                {Languages.map((lang) => {
+                  return (
+                    <MenuItem
+                      key={lang}
+                      value={lang}
+                      style={getStyles(lang, this)}
+                    >
+                      {lang}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
             </FormControl>
 
             <Button variant='contained' onClick={onSubmit}>

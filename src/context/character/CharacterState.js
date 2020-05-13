@@ -120,6 +120,7 @@ const CharacterState = (props) => {
         charisma: 12,
         maxHP: 16,
         armorClass: 18,
+        languages: ['Common'],
       },
       {
         id: 2,
@@ -228,6 +229,7 @@ const CharacterState = (props) => {
         charisma: 10,
         maxHP: 14,
         armorClass: 16,
+        languages: ['Common'],
       },
       {
         id: 3,
@@ -336,6 +338,7 @@ const CharacterState = (props) => {
         charisma: 11,
         maxHP: 12,
         armorClass: 13,
+        languages: ['Common'],
       },
     ],
     current: null,

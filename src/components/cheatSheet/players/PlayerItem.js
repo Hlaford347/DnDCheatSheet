@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import { Paper, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
+import Heart from './Heart';
+import Shield from './Shield';
 
 const useStyles = makeStyles({
   playerItem: {
@@ -20,24 +22,28 @@ const PlayerItem = ({ character }) => {
   return (
     <Fragment>
       <Paper className={classes.playerItem}>
-        <Grid container justify='space-between'>
-          <Grid item xs={3}>
-            <div>
-              <strong>{character.name}</strong>
-            </div>
+        <Grid container>
+          <Grid container item xs={6} justify='space-between'>
+            <Grid item xs={6}>
+              <div>
+                <strong>{character.name}</strong>
+              </div>
+            </Grid>
+            <Grid item xs={6}>
+              Level: {character.level}
+            </Grid>
+            <Grid item xs={12} className={classes.gridRow}>
+              {character.subrace !== null ? character.subrace : character.race}{' '}
+              {character.role}
+            </Grid>
           </Grid>
-          <Grid item xs={3}>
-            Level: {character.level}
-          </Grid>
-          <Grid item xs={3}>
-            Max HP: {character.maxHP}
-          </Grid>
-          <Grid item xs={3}>
-            AC: {character.armorClass}
-          </Grid>
-          <Grid item xs={12} className={classes.gridRow}>
-            {character.subrace !== null ? character.subrace : character.race}{' '}
-            {character.role}
+          <Grid container item xs={6} justify='space-between'>
+            <Grid item xs={6}>
+              <Heart maxHP={character.maxHP} />
+            </Grid>
+            <Grid item xs={6}>
+              <Shield armorClass={character.armorClass} />
+            </Grid>
           </Grid>
         </Grid>
       </Paper>
