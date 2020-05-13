@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "CheatSheet",
+  "name": "A tool for Dungeons and Dragons DMs to use",
   "icons": [
     {
       "src": "favicon.ico",
