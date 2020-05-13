@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/DnDCheatSheet/static/css/main.7298abb6.chunk.css",
-    "main.js": "/DnDCheatSheet/static/js/main.223701a5.chunk.js",
-    "main.js.map": "/DnDCheatSheet/static/js/main.223701a5.chunk.js.map",
+    "main.js": "/DnDCheatSheet/static/js/main.aa24bf58.chunk.js",
+    "main.js.map": "/DnDCheatSheet/static/js/main.aa24bf58.chunk.js.map",
     "runtime-main.js": "/DnDCheatSheet/static/js/runtime-main.3c686480.js",
     "runtime-main.js.map": "/DnDCheatSheet/static/js/runtime-main.3c686480.js.map",
-    "static/js/2.5ac997b2.chunk.js": "/DnDCheatSheet/static/js/2.5ac997b2.chunk.js",
-    "static/js/2.5ac997b2.chunk.js.map": "/DnDCheatSheet/static/js/2.5ac997b2.chunk.js.map",
+    "static/js/2.9128193b.chunk.js": "/DnDCheatSheet/static/js/2.9128193b.chunk.js",
+    "static/js/2.9128193b.chunk.js.map": "/DnDCheatSheet/static/js/2.9128193b.chunk.js.map",
     "index.html": "/DnDCheatSheet/index.html",
-    "precache-manifest.4d38e43f598706213ab8e87c91fcedfa.js": "/DnDCheatSheet/precache-manifest.4d38e43f598706213ab8e87c91fcedfa.js",
+    "precache-manifest.fe3c53c01aaad8418a5bde0edb432899.js": "/DnDCheatSheet/precache-manifest.fe3c53c01aaad8418a5bde0edb432899.js",
     "service-worker.js": "/DnDCheatSheet/service-worker.js",
     "static/css/main.7298abb6.chunk.css.map": "/DnDCheatSheet/static/css/main.7298abb6.chunk.css.map",
-    "static/js/2.5ac997b2.chunk.js.LICENSE.txt": "/DnDCheatSheet/static/js/2.5ac997b2.chunk.js.LICENSE.txt"
+    "static/js/2.9128193b.chunk.js.LICENSE.txt": "/DnDCheatSheet/static/js/2.9128193b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3c686480.js",
-    "static/js/2.5ac997b2.chunk.js",
+    "static/js/2.9128193b.chunk.js",
     "static/css/main.7298abb6.chunk.css",
-    "static/js/main.223701a5.chunk.js"
+    "static/js/main.aa24bf58.chunk.js"
   ]
 }
