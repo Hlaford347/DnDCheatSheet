@@ -30,8 +30,8 @@ const App = () => {
             <div className='row'>
               <Switch>
                 <Route exact path='/' component={Home} />
-                <Route exact path='/character' component={Character} />
-                <Route exact path='/cheatSheet' component={CheatSheet} />
+                <Route path='/character' component={Character} />
+                <Route path='/cheatSheet' component={CheatSheet} />
               </Switch>
             </div>
           </Fragment>
