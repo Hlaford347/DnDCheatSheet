@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div>
       <h1>Home</h1>
-      <p>HashRouter Added</p>
+      <p>Deployed to Heroku</p>
     </div>
   );
 };
