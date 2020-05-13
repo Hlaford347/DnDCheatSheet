@@ -2,6 +2,10 @@
   "name": "cheat-sheet",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.13.0",
+    "node": "10.15.3"
+  },
   "dependencies": {
     "@material-ui/core": "^4.9.12",
     "@material-ui/styles": "^4.9.10",
