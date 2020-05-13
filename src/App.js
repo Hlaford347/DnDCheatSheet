@@ -24,7 +24,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CharacterState>
-        <Router basename={process.env.PUBLIC_URL}>
+        <Router>
           <Fragment>
             <Navbar />
             <div className='row'>
