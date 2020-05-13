@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as HashRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Character from './components/pages/Character';
@@ -24,7 +24,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CharacterState>
-        <Router>
+        <HashRouter>
           <Fragment>
             <Navbar />
             <div className='row'>
@@ -35,7 +35,7 @@ const App = () => {
               </Switch>
             </div>
           </Fragment>
-        </Router>
+        </HashRouter>
       </CharacterState>
     </ThemeProvider>
   );
