@@ -6,6 +6,7 @@ import SkillsChart, { PassiveSkills } from '../cheatSheet/SkillsChart';
 import { makeStyles } from '@material-ui/styles';
 import SavingThrows from '../cheatSheet/SavingThrows';
 import Languages from '../cheatSheet/Languages';
+import SpellcastingAbility from '../cheatSheet/SpellcastingAbility';
 
 const getRandomColor = () => {
   const o = Math.round,
@@ -60,6 +61,12 @@ const CheatSheet = () => {
                 <Paper className={classes.chartCard}>
                   <h2 className={classes.chartHeader}>Known Languages</h2>
                   <Languages />
+                </Paper>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <Paper className={classes.chartCard}>
+                  <h2 className={classes.chartHeader}>Spellcasting Ability</h2>
+                  <SpellcastingAbility />
                 </Paper>
               </Grid>
             </Grid>
