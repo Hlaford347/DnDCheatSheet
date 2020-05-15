@@ -51,5 +51,5 @@
   "devDependencies": {
     "gh-pages": "^2.2.0"
   },
-  "homepage": "https://pacific-sea-21436.herokuapp.com/"
+  "proxy": "http://localhost:5000"
 }

@@ -6,8 +6,11 @@ import Character from './components/pages/Character';
 import CheatSheet from './components/pages/CheatSheet';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import { blueGrey, orange } from '@material-ui/core/colors/';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 
 import CharacterState from './context/character/CharacterState';
+import AuthState from './context/auth/AuthState';
 
 import './App.css';
 
@@ -23,20 +26,24 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <CharacterState>
-        <Router>
-          <Fragment>
-            <Navbar />
-            <div className='row'>
-              <Switch>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/character' component={Character} />
-                <Route exact path='/cheatSheet' component={CheatSheet} />
-              </Switch>
-            </div>
-          </Fragment>
-        </Router>
-      </CharacterState>
+      <AuthState>
+        <CharacterState>
+          <Router>
+            <Fragment>
+              <Navbar />
+              <div className='row'>
+                <Switch>
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/character' component={Character} />
+                  <Route exact path='/cheatSheet' component={CheatSheet} />
+                  <Route exact path='/register' component={Register} />
+                  <Route exact path='/login' component={Login} />
+                </Switch>
+              </div>
+            </Fragment>
+          </Router>
+        </CharacterState>
+      </AuthState>
     </ThemeProvider>
   );
 };
