@@ -1,55 +1,28 @@
 {
   "name": "cheat-sheet",
-  "version": "0.1.0",
-  "private": true,
-  "engines": {
-    "npm": "6.13.0",
-    "node": "10.15.3"
-  },
-  "dependencies": {
-    "@material-ui/core": "^4.9.12",
-    "@material-ui/styles": "^4.9.10",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "axios": "^0.19.2",
-    "chart.js": "^2.9.3",
-    "react": "^16.13.1",
-    "react-chartjs-2": "^2.9.0",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1",
-    "react-transition-group": "^4.3.0",
-    "serve": "^11.3.0",
-    "uuid": "^8.0.0",
-    "uuidv4": "^6.0.8"
-  },
+  "version": "1.0.0",
+  "description": "Cheat sheet tool for D&D",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.14"
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0"
-  },
-  "homepage": "https://pacific-sea-21436.herokuapp.com/"
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  }
 }
