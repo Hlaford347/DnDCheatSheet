@@ -167,7 +167,7 @@ const CharacterDetails = () => {
         charisma: 10,
         maxHP: 8,
         armorClass: 10,
-        languages: [],
+        languages: ['Common'],
       });
     }
   }, [characterContext, current]);
@@ -284,7 +284,7 @@ const CharacterDetails = () => {
     charisma: 10,
     maxHP: 8,
     armorClass: 10,
-    languages: [],
+    languages: ['Common'],
   });
 
   const {
@@ -319,30 +319,33 @@ const CharacterDetails = () => {
   const handleButtonPress = (e) => {
     // For changing skills on a player
     const skillToAdd = e.target.innerText;
-    checkSkills(skillToAdd);
+    const skillIndex = skills.findIndex((sk) => sk.name === skillToAdd);
+    const newSkillObj = changeSkillProficiency(findSkillObject(skillToAdd));
+
+    let newSkillsArray = skills;
+    newSkillsArray[skillIndex] = {
+      ...newSkillsArray[skillIndex],
+      proficient: newSkillObj.proficient,
+      expert: newSkillObj.expert,
+    };
+    setChar({ ...char, skills: newSkillsArray });
   };
 
-  const checkSkills = (skill) => {
-    let newSkills = skills;
-    let indexOfSkill;
-    const currentSkill = newSkills.filter((sk, index) => {
-      if (sk.name === skill) {
-        indexOfSkill = index;
-      }
-      return sk.name === skill;
-    })[0];
-
-    if (!currentSkill.proficient && !currentSkill.expert) {
-      newSkills[indexOfSkill].proficient = true;
-    } else if (currentSkill.proficient) {
-      newSkills[indexOfSkill].expert = true;
-      newSkills[indexOfSkill].proficient = false;
+  const changeSkillProficiency = (skillObj) => {
+    if (skillObj.proficient) {
+      skillObj.proficient = false;
+      skillObj.expert = true;
+    } else if (skillObj.expert) {
+      skillObj.expert = false;
     } else {
-      newSkills[indexOfSkill].expert = false;
+      skillObj.proficient = true;
     }
+    return skillObj;
+  };
 
-    setChar({ ...char, skills: newSkills });
-    console.log(char);
+  const findSkillObject = (skill) => {
+    const skillObj = skills.filter((sk) => sk.name === skill)[0];
+    return skillObj;
   };
 
   const handleLanguage = (e) => {
@@ -367,8 +370,8 @@ const CharacterDetails = () => {
       } else {
         updateCharacter(char);
       }
+      setCurrent(char);
     }
-    setCurrent(char);
   };
 
   return (

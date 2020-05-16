@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/styles';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
   text: {
@@ -49,7 +50,9 @@ const Heart = ({ maxHP }) => {
   const classes = useStyles();
   return (
     <Fragment>
-      <div className={classes.text}>{maxHP}</div>
+      <Typography className={classes.text} align='center'>
+        {maxHP < 10 ? `0${maxHP}` : maxHP}
+      </Typography>
       <div className={classes.heart}></div>
     </Fragment>
   );

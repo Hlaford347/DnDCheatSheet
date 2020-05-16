@@ -5,6 +5,7 @@ import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Character from './components/pages/Character';
 import CheatSheet from './components/pages/CheatSheet';
+import Profile from './components/pages/Profile';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import { blueGrey, orange } from '@material-ui/core/colors/';
 import Register from './components/auth/Register';
@@ -44,6 +45,7 @@ const App = () => {
                     path='/cheatSheet'
                     component={CheatSheet}
                   />
+                  <Route exact path='/profile' component={Profile} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />
                 </Switch>

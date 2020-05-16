@@ -11,7 +11,7 @@ const Players = () => {
     <Fragment>
       <List>
         {characters.map((character) => {
-          return <PlayerItem character={character} key={character.id} />;
+          return <PlayerItem character={character} key={character._id} />;
         })}
       </List>
     </Fragment>

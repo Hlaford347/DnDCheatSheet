@@ -9,6 +9,7 @@ import {
   Container,
   Typography,
   Grid,
+  Box,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
@@ -143,7 +144,10 @@ const Register = (props) => {
                   </FormControl>
                 </Grid>
                 <Grid item md={6} xs={12} className={classes.passwordCheck}>
-                  Password Check
+                  <Box p={1}>
+                    <p>Please make sure to use a unique email address</p>
+                    <p>Password must be greater than 6 characters</p>
+                  </Box>
                 </Grid>
               </Grid>
               <Container align='center'>

@@ -15,7 +15,7 @@ const Navbar = ({ title, icon }) => {
 
   const authLinks = (
     <Fragment>
-      Hello {user && user.name}
+      {user && user.name}
       <Button component={RouterLink} to='/login' onClick={onLogout}>
         <i className='fas fa-sign-out-alt'></i> <Hidden xsDown>Logout</Hidden>
       </Button>
@@ -39,7 +39,7 @@ const Navbar = ({ title, icon }) => {
         <Toolbar>
           <Grid container>
             {' '}
-            <Grid item align='left' xs={6}>
+            <Grid item align='left' xs={12} md={6}>
               <Button component={RouterLink} to='/'>
                 Home
               </Button>
@@ -54,7 +54,7 @@ const Navbar = ({ title, icon }) => {
                 </Fragment>
               )}
             </Grid>
-            <Grid item align='right' xs={6}>
+            <Grid item align='right' xs={12} md={6}>
               {isAuthenticated ? authLinks : guestLinks}
             </Grid>
           </Grid>

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react';
+import React, { Fragment, useContext, useState, useEffect } from 'react';
 import CharacterContext from '../../context/character/characterContext';
 import CharacterItem from './CharacterItem';
 import {
@@ -8,6 +8,7 @@ import {
   Box,
   Typography,
   makeStyles,
+  CircularProgress,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import CharacterDetails from '../characterDetails/CharacterDetails';
@@ -56,7 +57,18 @@ const Characters = () => {
   const characterContext = useContext(CharacterContext);
   const [value, setValue] = useState(1);
 
-  const { characters, clearCurrent, current } = characterContext;
+  const {
+    characters,
+    clearCurrent,
+    current,
+    getCharacters,
+    loading,
+  } = characterContext;
+
+  useEffect(() => {
+    getCharacters();
+    //eslint-disable-next-line
+  }, []);
 
   const handleChange = (e, newValue) => {
     if (newValue > countOfCharacters) {
@@ -79,7 +91,7 @@ const Characters = () => {
         >
           {characters.map((character, index) => (
             <Tab
-              key={character.id}
+              key={character._id}
               value={index + 1}
               label={character.name}
               {...a11yProps(index)}
@@ -88,12 +100,16 @@ const Characters = () => {
           <Tab value={countOfCharacters + 1} label='Add Character' />
         </Tabs>
       </AppBar>
-      {characters.map((character, index) => (
-        <TabPanel value={value} index={index + 1} key={character.id}>
-          <CharacterItem character={character} key={character.id} />
-          <CharacterDetails />
-        </TabPanel>
-      ))}
+      {loading ? (
+        <CircularProgress />
+      ) : (
+        characters.map((character, index) => (
+          <TabPanel value={value} index={index + 1} key={character._id}>
+            <CharacterItem character={character} key={character._id} />
+            <CharacterDetails />
+          </TabPanel>
+        ))
+      )}
       {current === null ? (
         <TabPanel index={countOfCharacters + 1} value={value}>
           <Box fontSize='h5.fontSize'>Add Character</Box>

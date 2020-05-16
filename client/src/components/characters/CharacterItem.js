@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import CharacterContext from '../../context/character/characterContext';
 
 const CharacterItem = ({ character }) => {
-  const { id, name, race, subrace, level, skills, role } = character;
+  const { _id, name, race, subrace, level, role } = character;
 
   const characterContext = useContext(CharacterContext);
 
@@ -25,7 +25,7 @@ const CharacterItem = ({ character }) => {
   }, []);
 
   const removeCharacter = () => {
-    deleteCharacter(id);
+    deleteCharacter(_id);
     clearCurrent();
     handleClose();
   };
@@ -43,28 +43,25 @@ const CharacterItem = ({ character }) => {
   return (
     <Fragment>
       <Box>
-        <Grid container spacing={0} justify='space-between'>
-          <Grid item xs={2}>
+        <Grid container spacing={1} justify='space-between'>
+          <Grid item xs={4} md={2}>
             <strong>{name}</strong>
           </Grid>
-          <Grid item xs={2}>
-            Race: {subrace ? subrace : race}
+          <Grid item xs={8} md={2}>
+            Race:{' '}
+            {subrace
+              ? race === 'Dragonborn'
+                ? `${subrace} ${race}`
+                : subrace
+              : race}
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={6} md={2}>
             Class: {role}
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={6} md={2}>
             Level: {level}
           </Grid>
-          <Grid item xs={2}>
-            {skills.map((skill) => {
-              if (skill.proficient) {
-                return skill.name + ', ';
-              }
-              return null;
-            })}
-          </Grid>
-          <Grid item>
+          <Grid item xs={12} md={2} align='right'>
             <Button
               color='secondary'
               variant='contained'

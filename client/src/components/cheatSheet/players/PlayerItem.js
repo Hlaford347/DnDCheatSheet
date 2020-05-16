@@ -33,7 +33,11 @@ const PlayerItem = ({ character }) => {
               Level: {character.level}
             </Grid>
             <Grid item xs={12} className={classes.gridRow}>
-              {character.subrace !== null ? character.subrace : character.race}{' '}
+              {character.subrace
+                ? character.race === 'Dragonborn'
+                  ? `${character.subrace} ${character.race}`
+                  : character.subrace
+                : character.race}{' '}
               {character.role}
             </Grid>
           </Grid>
