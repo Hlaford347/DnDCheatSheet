@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   FormGroup,
   FormControl,
@@ -11,6 +11,7 @@ import {
   Box,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import AuthContext from '../../context/auth/authContext';
 
 const useStyles = makeStyles((theme) => ({
   header: { marginTop: theme.spacing(2) },
@@ -21,10 +22,31 @@ const useStyles = makeStyles((theme) => ({
   },
   formContainer: { marginTop: theme.spacing(2), padding: '1rem' },
   button: { margin: theme.spacing(2), width: '80%' },
+  error: { color: 'red' },
 }));
 
-const Login = () => {
+const Login = (props) => {
   const classes = useStyles();
+
+  const authContext = useContext(AuthContext);
+  const [loginError, setLoginErr] = useState('');
+  const [emailInvalid, setEmailValid] = useState(false);
+  const [passwordInvalid, setPasswordValid] = useState(false);
+
+  const { login, error, clearErrors, isAuthenticated } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/');
+    }
+
+    if (error === 'Invalid Credentials') {
+      setEmailValid(true);
+      setLoginErr(error);
+      clearErrors();
+    }
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
     email: '',
@@ -32,21 +54,28 @@ const Login = () => {
   });
 
   const { email, password } = user;
-  const emailInvalid = () => {
-    console.log('email invalid');
-  };
-  const passwordInvalid = () => {
-    console.log('password invalid');
+
+  const handleValidation = () => {
+    setEmailValid(email === '');
+    setPasswordValid(password === '');
   };
 
   const navigateToRegister = () => {};
 
-  const handleChange = (e) =>
+  const handleChange = (e) => {
+    setLoginErr('');
     setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('Login submit');
+    handleValidation();
+
+    if (email === '' || password === '') {
+      setLoginErr('Please fill in all fields');
+    } else {
+      login({ email, password });
+    }
   };
 
   return (
@@ -56,6 +85,11 @@ const Login = () => {
           <Typography variant='h4' align='center' className={classes.header}>
             Login
           </Typography>
+          {loginError && (
+            <Typography variant='h6' align='center' className={classes.error}>
+              {loginError}
+            </Typography>
+          )}
           <FormGroup>
             <Container align='center'>
               <FormControl className={classes.formControl}>
