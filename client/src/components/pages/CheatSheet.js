@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import SheetDetails from '../cheatSheet/SheetDetails';
 import { Grid, Box, Paper } from '@material-ui/core';
 import Players from '../cheatSheet/players/Players';
@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/styles';
 import SavingThrows from '../cheatSheet/SavingThrows';
 import Languages from '../cheatSheet/Languages';
 import SpellcastingAbility from '../cheatSheet/SpellcastingAbility';
+import AuthContext from '../../context/auth/authContext';
 
 const getRandomColor = () => {
   const o = Math.round,
@@ -30,6 +31,13 @@ const useStyles = makeStyles({
 });
 
 const CheatSheet = () => {
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    authContext.loadUser();
+    // eslint-disable-next-line
+  }, []);
+
   const classes = useStyles();
 
   const colorsArray = [];

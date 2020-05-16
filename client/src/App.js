@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
@@ -11,6 +11,7 @@ import Login from './components/auth/Login';
 
 import CharacterState from './context/character/CharacterState';
 import AuthState from './context/auth/AuthState';
+import setAuthToken from './utils/setAuthToken';
 
 import './App.css';
 
@@ -21,9 +22,11 @@ const theme = createMuiTheme({
   },
 });
 
-const App = () => {
-  useEffect(() => {});
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
+const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <AuthState>
