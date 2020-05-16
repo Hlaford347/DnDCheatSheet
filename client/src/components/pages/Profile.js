@@ -45,7 +45,7 @@ const Profile = () => {
       setChangeErr('Passwords do not match');
       setPasswordInvalid(true);
     } else {
-      console.log('Will Change');
+      console.log('Will modify');
     }
   };
 
