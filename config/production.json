@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://hlaford:r0nY9TqhoaoOlRuz@dndcheatsheet-6xajd.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "userSecretforAuth"
+}
